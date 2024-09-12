@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .mySerif {
+    font-family: "Cormorant Garamond", serif;
+  }
+
+  .linkUnderline {
+    position: relative;
+    cursor: pointer;
+    text-underline-offset: 6px;
+  }
+
+  .linkUnderline::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: black;
+    transition: width 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  }
+
+  .linkUnderline:hover::before {
+    width: 100%;
+  }
+
+  .linkUnderline::active {
+    text-decoration: underline;
+  }
+
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+
+  .snap-container > * {
+    scroll-snap-align: start;
+  }
+
+  .slideAnimation {
+    animation: slideshow 16s infinite;
+  }
+
+  .reservationSelect {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.125rem;
+    padding: 0.5rem;
+  }
+
+  .dot {
+    width: 33px;
+    height: 9px;
+    background-color: #9ca3af;
+    border-radius: 50px;
+    margin-right: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+  .activedot {
+    background-color: #b4720d;
+  }
+
+  .accentButton {
+    @apply border-2 border-accent bg-accent text-primary font-medium rounded-sm;
+  }
+
+  .accentButton:hover {
+    @apply bg-white border-2 border-accent text-accent;
+  }
+
+  .accentButton:active {
+    @apply bg-accent text-white;
+  }
+}
+
+@keyframes slideshow {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-200%);
+  }
+  80% {
+    transform: translateX(-300%);
+  }
+  95% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
